@@ -88,22 +88,12 @@ function better_ls()
 			## LIST PARENTS, DIRS, AND FILES
 			## - Convert dir name
 			## - Check that not at /, because there is no parent
-			$LS -d {.,..,*} -lA --color=auto --human-readable \
+			$LS -d {.,..,*} -l --file-type --color=auto --human-readable \
 				--time-style=long-iso --group-directories-first;			
-
-			## List hidden folders and files (only if they exist)
-			hidden_files=$($LS -U -d .[^.]* 2> /dev/null | wc -l)	
-			if [ "$hidden_files" != "0" ]
-			then
-				echo ""
-				$LS -d .[^.]* -l --color=auto --hide='..' \
-					--human-readable --time-style=long-iso \
-					--group-directories-first;
-			fi
 
 		## IF THE TARGET DIR IS EMPTY -> List . and ..
 		else
-			$LS -d {.,..,} -lA --color=auto --human-readable \
+			$LS -d {.,..,} -lA --file-type --color=auto --human-readable \
 				--time-style=long-iso --group-directories-first;
 		fi
 
@@ -123,21 +113,84 @@ function better_ls()
 
 	## IF ARGUMENT IS A SINGLE FILE
 	elif [ $# -eq 1 -a -f "$1" ]; then
-		$LS -l --color=auto --human-readable --time-style=long-iso "$1"
+		$LS -l --color=auto --file-type --human-readable --time-style=long-iso "$1"
 
 
 
 	## IF ARGUMENTS PASSED -> run standard ls but with some tweaks (eg: colors)		
 	else
-		$LS --color=auto --human-readable --time-style=long-iso \
+		$LS --color=auto --file-type --human-readable --time-style=long-iso \
 		    --group-directories-first "$@";	
 	fi
 }
 
-
-
 ## Override default ls
 alias ls='better_ls'
+
+function better_la()
+{
+	shopt -s extglob
+	local LS="$(which ls)"
+
+
+	## IF NO ARGUMENTS PASSED -> run better ls version on current folder
+	## OR IF ARGUMENT IS A PATH -> run better ls version on specified folder
+	if [ $# -eq 0 ]; then
+
+		## IF THE CURRENT FOLDER IS NOT EMPTY -> Display all
+		files=$($LS -U * 2> /dev/null | wc -l)	
+		if [ "$files" != "0" ]
+		then 
+			## LIST PARENTS, DIRS, AND FILES
+			## - Convert dir name
+			## - Check that not at /, because there is no parent
+			$LS -d {.,..,*} -l --file-type --color=auto --human-readable \
+				--time-style=long-iso --group-directories-first;			
+
+			## List hidden folders and files (only if they exist)
+			hidden_files=$($LS -U -d .[^.]* 2> /dev/null | wc -l)	
+			if [ "$hidden_files" != "0" ]
+			then
+				echo ""
+				$LS -d .[^.]* -l --file-type --color=auto --hide='..' \
+					--human-readable --time-style=long-iso \
+					--group-directories-first;
+			fi
+
+		## IF THE TARGET DIR IS EMPTY -> List . and ..
+		else
+			$LS -d {.,..,} -lA --file-type --color=auto --human-readable \
+				--time-style=long-iso --group-directories-first;
+		fi
+
+		
+
+	## IF ARGUMENT IS A SINGLE PATH
+	## Move to target dir
+	## Call recursively with no arguments
+	## Restore dir
+	elif [ $# -eq 1 -a -d "$1" ]; then
+		local current_pwd="$PWD"
+		'cd' "$1/"
+		better_ls
+		'cd' "$current_pwd"
+
+
+
+	## IF ARGUMENT IS A SINGLE FILE
+	elif [ $# -eq 1 -a -f "$1" ]; then
+		$LS -l --color=auto --file-type --human-readable --time-style=long-iso "$1"
+
+
+
+	## IF ARGUMENTS PASSED -> run standard ls but with some tweaks (eg: colors)		
+	else
+		$LS --color=auto --file-type --human-readable --time-style=long-iso \
+		    --group-directories-first "$@";	
+	fi
+}
+
+alias la='better_la'
 
 
 ### EOF ###
