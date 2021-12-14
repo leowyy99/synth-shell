@@ -1,51 +1,9 @@
-This is a configured version of the original synth-shell(https://github.com/andresgongora/synth-shell). 
+This is a configured version of the original synth-shell (https://github.com/andresgongora/synth-shell). 
 
 - **Key changes**
   - better-ls have been updated. 
   - synth-shell-prompt have been configured with monokai theme.
   - setup.sh have been updated to only install better-ls and synth-shell-prompt. 
-
-![synth-shell](doc/synth-shell.jpg)
-
-
-**synth-shell**  improves your terminal experience and productivity through a 
-combination of small bash scripts.
-
-
-- **System status report**:
-  - Automatically printed in new terminal sessions (local, SSH, ...).
-  - Monitor your servers, RaspberryPis, and workstations. All system info you
-    need at a glance (e.g. external IP address, CPU temperature, etc.).
-  - Detect broken services or CPU hogs.
-  - Print your own ASCII logo every time you log in.
-
-- **Fancy bash prompt**:
-  - Configurable colors and aesthetics.
-  - Git statuses (requires pull/push, is dirty, etc.) if inside a directory that
-    is part of a git repository.
-  - Better separation between user input and command outputs.
-
-- **better ls**: `ls` and `la` on steroids alternative.
-  
-- **alias**: add colors and a nicer behaviour to basic commands.
-  - `grep`.
-  - `pacman`.
-  - `tree`.
-  - `dmesg`.
-  - `free`.
-  - `sudo`: autocomplete commands.
-  - `history`: nicer format and no duplicate (consecutively the same) commands.
-  
-
-![Example with status.sh and fancy-bash-prompt.sh](doc/screenshot.png)
-
-
-All features are optional, and most can also be customized to your liking.
-Once installed, the scripts are called from within you `.bashrc` file and
-become part of the bash session. You can find more details and similar 
-tools on [Yet Another Linux'n Electronics Blog](https://yalneb.blogspot.com/).
-
-
 
 <br/><br/>
 
@@ -69,7 +27,7 @@ cd synth-shell
 ./setup.sh
 ```
 
-Note: Only better-ls and synth-shell-prompt will be installed. Other features will require some changes to setup.sh
+Note: Only better-ls and synth-shell-prompt will be installed. Other features will require the original setup script.
 
 Note that for `fancy-bash-prompt.sh` you might also need to have the [power-line fonts](https://github.com/powerline/fonts) package installed. You can install the package as follows (the exact name of the package varies from distro to distro):
 
@@ -121,23 +79,6 @@ rm -r ~/.config/synth-shell/
 #                                    Overview
 <!--------------------------------------+-------------------------------------->
 
-### status.sh
-`status.sh` provides a summarized system report at a single glance every time
-you open up a new terminal. If it detects that any system parameter
-(e.g. CPU load, memory, etc.) is over a critical threshold, it will provide a
-warning and additional information about the cause. Last but not least, it
-prints a user-configurable ASCII logo to impress your crush from the library
-with how awesome you are.
-
-Feel free to customize your status report through the many available options
-in `~/.config/synth-shell/status.config` (user-only install) or
-`/etc/synth-shell/status.config` (system-wide install), or by replacing their
-content with the examples files you can find under the same directory.
-
-![status configuration options](doc/status_config_preview.png)
-
-
-
 ### fancy-bash-prompt.sh
 Adds colors and triangular separators to your bash prompt, and if the current
 working directory is part of a git repository, also git statuses and branches.
@@ -164,21 +105,6 @@ all files (`-la`), sort folders first, add colors to output, and list hidden
 files last after a quick separator. However, if you chose to call `ls` with your
  own parameters (e.g. `ls -l`) it will revert to the default behavior except
 for color and sorting options.
-
-
-
-### Alias
-
-- `grep` to `grep --color=auto`.
-- `pacman` to `pacman --color=auto`.
-- `tree` to `tree --dirsfirst -C`.
-- `dmesg` to `dmesg --color=auto --reltime --human --nopager --decode`.
-- `free` to `free -mht`.
-- `sudo` adds `complete -cf sudo` to auto-complete commands.
-- `history` various changes.
-
-
-
 
 <br/><br/>
 
@@ -270,4 +196,9 @@ Copyright (c) 2014-2021, Andres Gongora - www.andresgongora.com
   or if not present, <http://www.gnu.org/licenses/>.
 * If you need a closed-source version of this software
   for commercial purposes, please contact the [authors](AUTHORS.md).
+  
+ <!--------------------------------------+-------------------------------------->
+#                                    Ackowledgements
+<!--------------------------------------+-------------------------------------->
 
+* Andres Gongora https://github.com/andresgongora/synth-shell
