@@ -1,4 +1,4 @@
-This is a configured version of the original synth-shell (https://github.com/andresgongora/synth-shell). 
+This is a configured version of the original synth-shell (https://github.com/andresgongora/synth-shell). Only critical information is provided in this document. Refer to original repo for more information.
 
 - **Key changes**
   - better-ls have been updated. 
@@ -27,24 +27,12 @@ cd synth-shell
 ./setup.sh
 ```
 
-Note: Only better-ls and synth-shell-prompt will be installed. Other features will require the original setup script.
+Only better-ls and synth-shell-prompt will be installed. Other features will require the original setup script.
 
 Note that for `fancy-bash-prompt.sh` you might also need to have the [power-line fonts](https://github.com/powerline/fonts) package installed. You can install the package as follows (the exact name of the package varies from distro to distro):
 
 * ArchLinux: `sudo pacman -S powerline-fonts`
 * Debian/Ubuntu: `sudo apt install fonts-powerline`
-
-Finally, open up a new terminal and test that everything works. Sometimes,
-despite power-line fonts being properly installed, the triangle separator 
-for `fancy-bash-prompt.sh` (if installed) might still not show. In this case, 
-make sure that your `locale` is set to UTF-8 by editing `/etc/locale.conf` file 
-(select your language but in UTF-8 format) and running `sudo locale-gen`.
-[More info on locale](https://wiki.archlinux.org/index.php/locale).
-Alternatively, try a different font in your terminal emulator. Some fonts
-do not support special characters. We get the best results with
-[hack-ttf](https://sourcefoundry.org/hack/).
-
-
 
 ### Configuration/customization
 You can configure your scripts by modifying the corresponding configuration
@@ -60,7 +48,7 @@ files. You can find them, along the example configuration files, in the followin
 at the bottom of the file. If you want to temporarily disable the script, you can
 just comment them by placing `#` in front.
 ```
-nano ~/.bashrc
+vim ~/.bashrc
 ```
 
 2. Remove the folder containing the script, usually in your home folder under 
@@ -109,51 +97,6 @@ for color and sorting options.
 <br/><br/>
 
 
-
-<!--------------------------------------+-------------------------------------->
-#                                   Contribute
-<!--------------------------------------+-------------------------------------->
-
-This project is only possible thanks to the effort and passion of many, 
-including developers, testers, and of course, our beloved coffee machine.
-You can find a detailed list of everyone involved in the development
-in [AUTHORS.md](AUTHORS.md). Thanks to all of you!
-
-If you like this project and want to contribute, you are most welcome to do so.
-
-
-
-### Help us improve
-
-* [Report a bug](https://github.com/andresgongora/synth-shell/issues/new/choose): 
-  if you notice that something isn't working properly, tell us. We'll try to fix it ASAP.
-* Suggest an idea you would like to see in the next release: send us
-  and email or open an [issue](https://github.com/andresgongora/synth-shell/issues)!
-* Become a developer: fork this repo and become an active developer!
-  Take a look at the [issues](https://github.com/andresgongora/synth-shell/issues)
-  for suggestions of where to start. Also, take a look at our 
-  [coding style](/doc/coding_style.md).
-* Spread the word: telling your friends is the fastest way to get this code to
-  the people who might enjoy it!
-
-
-
-### Git branches
-
-There are two branches in this repository:
-
-* **master**: this is the main branch, and thus contains fully functional 
-  scripts. When you want to use the scripts as a _user_, 
-  this is the branch you want to clone or download.
-* **develop**: this branch contains all the new features and most recent 
-  contributions. It is always _stable_, in the sense that you can use it
-  without major inconveniences. 
-  However, it's very prone to have undetected bugs and it might be subject to major
-  unannounced changes. If you want to contribute, this is the branch 
-  you should pull-request to.
-
-
-
 <br/><br/>
 
 
@@ -162,22 +105,8 @@ There are two branches in this repository:
 #                                     About
 <!--------------------------------------+-------------------------------------->
 
-**synth-shell** started as a loose collection of (very simple) bash scripts I 
-used for system maintenance. In the beginning, they were simple aids to make my 
-life easier, but as I progressively got the hang out of bash, I also wanted them
-to print some nice output to the terminal.
-
-This repository was quite different at the beginning. The content of most
-scripts were loose snippets from third parties that were somehow smashed 
-together. They worked, but not exactly the way I wanted. So, over time I have 
-rewritten most scripts from scratch, removed fluff, and teamed up with 
-super-friendly and engaged [contributors](AUTHORS.md). The result is what you 
-see today. I admit it, it's nothing fancy. But it was real fun working on the 
-scripts.
-
-And the name? That's quite easy. I spent most of my coding frenzy
-listening to [SynthWave](https://en.wikipedia.org/wiki/Synthwave) to feel like
-[Hackerman](https://www.youtube.com/watch?v=KEkrWRHCDQU).
+This version of synth-shell is done up to fit my personal preference of monokai 
+themed terminal and to make use of the upgraded `ls`. 
 
 
 
