@@ -1,3 +1,10 @@
+This is a configured version of the original synth-shell(https://github.com/andresgongora/synth-shell). 
+
+- **Key changes**
+  - better-ls have been updated. 
+  - synth-shell-prompt have been configured with monokai theme.
+  - setup.sh have been updated to only install better-ls and synth-shell-prompt. 
+
 ![synth-shell](doc/synth-shell.jpg)
 
 
@@ -18,7 +25,7 @@ combination of small bash scripts.
     is part of a git repository.
   - Better separation between user input and command outputs.
 
-- **better ls**: an `ls -la` on steroids alternative.
+- **better ls**: `ls` and `la` on steroids alternative.
   
 - **alias**: add colors and a nicer behaviour to basic commands.
   - `grep`.
@@ -54,14 +61,15 @@ The included [setup script](setup.sh) will guide you step by step through the
 process and let you choose what features to install. During this setup, you can
 choose to install synth-shell for your user only (recommended) or system-wide
 (superuser privileges required). To proceed,
-[open and play this link in a separate tab](https://www.youtube.com/embed/MpN91wHAr1k)
 and enter the following into your terminal:
 ```
-git clone --recursive https://github.com/andresgongora/synth-shell.git
+git clone git@github.com:leowyy99/synth-shell.git
 chmod +x synth-shell/setup.sh
 cd synth-shell
 ./setup.sh
 ```
+
+Note: Only better-ls and synth-shell-prompt will be installed. Other features will require some changes to setup.sh
 
 Note that for `fancy-bash-prompt.sh` you might also need to have the [power-line fonts](https://github.com/powerline/fonts) package installed. You can install the package as follows (the exact name of the package varies from distro to distro):
 
