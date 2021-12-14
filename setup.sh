@@ -34,7 +34,8 @@ include 'bash-tools/bash-tools/user_io.sh'
 include 'bash-tools/bash-tools/shell.sh'
 
 
-
+## Copy synth-shell-prompt config
+cp ./synth-shell-prompt.config ./synth-shell/synth-shell-prompt/config
 
 
 
